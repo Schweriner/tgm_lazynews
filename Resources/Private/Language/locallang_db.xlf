@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-11T15:46:07Z" product-name="tgm_lazynews">
+		<header/>
+		<body>
+			<trans-unit id="tx_tgmlazynews_domain_model_news">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_extbase_type.Tx_TgmLazynews_News">
+				<source>TgM Lazy Loading News News</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

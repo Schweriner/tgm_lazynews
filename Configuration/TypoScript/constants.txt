@@ -1,0 +1,15 @@
+
+plugin.tx_tgmlazynews {
+	view {
+		# cat=plugin.tx_tgmlazynews/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:tgm_lazynews/Resources/Private/Templates/
+		# cat=plugin.tx_tgmlazynews/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:tgm_lazynews/Resources/Private/Partials/
+		# cat=plugin.tx_tgmlazynews/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:tgm_lazynews/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_tgmlazynews//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

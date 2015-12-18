@@ -1,0 +1,15 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:comment>The {settings} are filled with the news typoscript settings so you can use the n: Viewhelpers</f:comment>
+
+    <f:for each="{news}" as="newsItem">
+        <div class="news-item">
+            <h3>{newsItem.title}</h3>
+            <p>YOU HAVE TO EDIT THE AJAX.HTML TEMPLATE FOR YOUR NEWS VIEW!</p>
+        </div>
+    </f:for>
+</f:section>
