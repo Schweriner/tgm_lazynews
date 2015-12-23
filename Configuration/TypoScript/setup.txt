@@ -30,6 +30,6 @@ plugin.tx_tgmlazynews {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
-	settings < plugin.tx_news.settings
-	_LOCAL_LANG < plugin.tx_news._LOCAL_LANG
+	settings =< plugin.tx_news.settings
+	_LOCAL_LANG =< plugin.tx_news._LOCAL_LANG
 }
