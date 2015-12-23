@@ -103,3 +103,10 @@ Templating
 
 Since version 0.1.4 the extension includes the Typoscript and language data of the original news extension.
 This allows you to use the ViewHelpers of news in Fluid using the {settings} array.
+
+For access to the language files of news, use the attribute extensionName="News" in the f:translate tag.
+
+Changelog
+==================
+
+You can find the changelog on github https://github.com/Schweriner/tgm_lazynews/commits/master
