@@ -19,9 +19,9 @@ news_api {
 
 plugin.tx_tgmlazynews {
 	view {
-		templateRootPath = {$plugin.tx_tgmlazynews.view.templateRootPath}
-		partialRootPath = {$plugin.tx_tgmlazynews.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_tgmlazynews.view.layoutRootPath}
+		templateRootPaths.100 = {$plugin.tx_tgmlazynews.view.templateRootPath}
+		partialRootPaths.100 = {$plugin.tx_tgmlazynews.view.partialRootPath}
+		layoutRootPaths.100 = {$plugin.tx_tgmlazynews.view.layoutRootPath}
 	}
 	persistence {
 		storagePid = {$plugin.tx_tgmlazynews.persistence.storagePid}
