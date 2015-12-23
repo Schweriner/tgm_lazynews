@@ -5,11 +5,13 @@
 <f:section name="main">
 
 	<f:comment>The {settings} are filled with the news typoscript settings so you can use the n: Viewhelpers</f:comment>
+    <f:comment>For access to language files add the attribute extensionName="News" in the f:translate tag.</f:comment>
 
     <f:for each="{news}" as="newsItem">
-        <div class="news-item">
+        <div class="article news-item">
             <h3>{newsItem.title}</h3>
-            <p>YOU HAVE TO EDIT THE AJAX.HTML TEMPLATE FOR YOUR NEWS VIEW!</p>
+            <p>YOU HAVE TO EDIT THE AJAX.HTML TEMPLATE FOR YOUR NEWS VIEW! YOU CAN JUST INSERT THE NEWS DETAIL
+               PARTIAL HERE</p>
         </div>
     </f:for>
 </f:section>
