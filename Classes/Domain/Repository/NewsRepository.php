@@ -41,6 +41,7 @@ class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
      * Finds news by offset and additional constraints
      */
     public function findByOffset($offset, $limit, $additional=NULL) {
+        // TODO: The offset does not respect already displayed news e.g. from top news
         $query = $this->createQuery();
         $query->setOffset($offset)->setLimit($limit);
         
