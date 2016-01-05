@@ -3,6 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+// TODO: Exclude this plugin from default content elements
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Ajax',
