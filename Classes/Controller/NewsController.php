@@ -47,15 +47,14 @@ class NewsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 */
 	public function ajaxAction() {
 		if($this->request->hasArgument('offset') && $this->request->hasArgument('limit') && $this->request->hasArgument('model')) {
+
             $model = $this->request->getArgument('model');
-            $limit = $this->request->getArgument('limit');
-            $offset = $this->request->getArgument('offset');
-            
-            $constraints = $this->request->hasArgument('constraints') ? $this->request->getArgument('constraints') : NULL;
-            
+            $limit = intval($this->request->getArgument('limit'));
+            $offset = intval($this->request->getArgument('offset'));
+
             if($model=='news') {
-                $data = $this->newsRepository->findByOffset((integer)$this->request->getArgument('offset'), (integer)$this->request->getArgument('limit'), $constraints);                
-            }            
+                $data = $this->newsRepository->findByOffset($offset, $limit, $this->settings['lazy_constraints']);
+            }
             if($data->count()==0) {
                 return 'end';
             }

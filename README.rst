@@ -44,8 +44,9 @@ The extension will include the following Javascript / jQuery function to your pa
 	            "tx_tgmlazynews_ajax[offset]" : offset,
 	            "tx_tgmlazynews_ajax[limit]" : limit,
 	        };
-	     
-	    if(constraints) data['tx_tgmlazynews_ajax[constraints]'] = constraints;
+
+	    // JS Constraints are removed since 0.2.0 see Typoscript
+	    // if(constraints) data['tx_tgmlazynews_ajax[constraints]'] = constraints;
 	     
 	    $.ajax({
 	        type: "GET",
@@ -84,13 +85,12 @@ You just have to call the function if if you want to add News to your list view.
 	            // Set lazy loading true to prevend multiple lazy loading at the same time
 	            lazy_loading = true;
 	 
-	            // Constraints must be a JSON Object like this: 
-	            //var contraints = {'categories' : "1,2,3"};
-	            var contraints = false;
-	             
+	            // JS CONSTRAINTS ARE NO LONGER SUPPORTET! SEE TYPOSCRIPT!
+	            // var contraints = {'categories' : "1,2,3"};
+
 	            // Call the function
 	            // Model = news, jQuery selected news-list-container, offset, limit and optional constraints
-	            lazyLoadNews('news',$('.news-list-view'), offset, 5, contraints);
+	            lazyLoadNews('news',$('.news-list-view'), offset, 5);
 	        } 
 	    });
 	}
@@ -105,6 +105,38 @@ Since version 0.1.4 the extension includes the Typoscript and language data of t
 This allows you to use the ViewHelpers of news in Fluid using the {settings} array.
 
 For access to the language files of news, use the attribute extensionName="News" in the f:translate tag.
+
+Filtering of news by constraints / conditions
+==================
+
+Due to security and configuration-possibilities, the **constraints have been removed from the Javascript since version 0.2.0 and now placed inside Typoscript**.
+You can configure additional conditions on the repository request in plugin.tx_tgmlazynews.settings.lazy_constraints.
+
+The following example configuration will **exclude News-Events of EXT:eventnews** from beeing fetched by the repository::
+
+	plugin.tx_tgmlazynews {
+		settings {
+			lazy_constraints {
+				0 {
+					property = is_event
+					value = 0
+					intval = 1
+					operator = equals
+				}
+			}
+		}
+	}
+You can use the "lazy_constraints" part of the settings like an array [0,1,3] - all conditions will be combined with AND!
+Property = the field the value must match with. At the moment you can use the operators:
+
+* contains
+* equals
+* greaterThan
+* greaterThanOrEqual
+* lessThan
+* lessThanOrEqual
+
+Please make sure the property you are using really exists in the database!
 
 Changelog
 ==================

@@ -12,9 +12,9 @@
 
 $EM_CONF[$_EXTKEY] = array (
 	'title' => 'TgM Lazy Loading News',
-	'description' => 'This extension offers a page type to receive lazy loaded news of versatile news from. See http://blog.teamgeist-medien.de/?p=1162',
+	'description' => 'This extension offers a page type to receive lazy loaded news of versatile news from.',
 	'category' => 'plugin',
-	'version' => '0.1.5',
+	'version' => '0.2.0',
 	'state' => 'beta',
 	'uploadfolder' => false,
 	'createDirs' => '',

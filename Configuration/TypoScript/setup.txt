@@ -42,12 +42,15 @@ plugin.tx_tgmlazynews {
 	settings =< plugin.tx_news.settings
 	settings {
 		lazy_constraints {
+			# Constraints example for the extension newsevent
+			/*
 			0 {
 				property = is_event
 				value = 0
 				intval = 1
 				operator = equals
 			}
+			*/
 		}
 	}
 	_LOCAL_LANG =< plugin.tx_news._LOCAL_LANG

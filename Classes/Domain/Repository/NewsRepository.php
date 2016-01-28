@@ -40,16 +40,45 @@ class NewsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
     /**
      * Finds news by offset and additional constraints
      */
-    public function findByOffset($offset, $limit, $additional=NULL) {
+    public function findByOffset($offset, $limit, $constraints=NULL) {
+
         // TODO: The offset does not respect already displayed news e.g. from top news
         $query = $this->createQuery();
         $query->setOffset($offset)->setLimit($limit);
         
-        if($additional!=NULL) {
-            foreach ($additional as $key => $value) {
-                $constraints[] =  $query->contains($key, $value);
+        if($constraints!=NULL) {
+
+            $fullConstraints = array();
+
+            foreach ($constraints as $singleConstraint) {
+
+                if(isset($singleConstraint['property'])
+                    && isset($singleConstraint['value'])
+                    && isset($singleConstraint['operator'])) {
+
+                    if($singleConstraint['intval']=='1') {
+                        $value = intval($singleConstraint['value']);
+                    } else {
+                        $value = $singleConstraint['value'];
+                    }
+
+                    $property = $singleConstraint['property'];
+
+                    // TODO: Include other operators
+                    switch($singleConstraint['operator']) {
+                        case 'contains' : $fullConstraints[] =  $query->contains($property, $value); break;
+                        case 'equals' : $fullConstraints[] =  $query->equals($property, $value); break;
+                        case 'greaterThan' : $fullConstraints[] =  $query->greaterThan($property, $value); break;
+                        case 'greaterThanOrEqual' : $fullConstraints[] =  $query->greaterThanOrEqual($property, $value); break;
+                        case 'lessThan' : $fullConstraints[] =  $query->lessThan($property, $value); break;
+                        case 'lessThanOrEqual' : $fullConstraints[] =  $query->lessThanOrEqual($property, $value); break;
+                    }
+                }
             }
-            $query->matching($query->logicalAnd($constraints));
+
+            if(!empty($fullConstraints)) {
+                $query->matching($query->logicalAnd($fullConstraints));
+            }
         }
         
         return $query->execute();

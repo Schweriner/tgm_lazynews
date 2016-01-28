@@ -17,8 +17,9 @@ function lazyLoadNews(model, selector, offset, limit, constraints) {
             "tx_tgmlazynews_ajax[offset]" : offset,
             "tx_tgmlazynews_ajax[limit]" : limit,
         };
-    
-    if(constraints) data['tx_tgmlazynews_ajax[constraints]'] = constraints;
+
+    // JS Constraints are removed since 0.2.0 see Typoscript
+    // if(constraints) data['tx_tgmlazynews_ajax[constraints]'] = constraints;
     
     $.ajax({
         type: "GET",
