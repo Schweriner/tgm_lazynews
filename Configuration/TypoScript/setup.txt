@@ -19,9 +19,18 @@ news_api {
 
 plugin.tx_tgmlazynews {
 	view {
-		templateRootPaths.100 = {$plugin.tx_tgmlazynews.view.templateRootPath}
-		partialRootPaths.100 = {$plugin.tx_tgmlazynews.view.partialRootPath}
-		layoutRootPaths.100 = {$plugin.tx_tgmlazynews.view.layoutRootPath}
+		templateRootPaths {
+			10 = EXT:tgm_lazynews/Resources/Private/Templates/
+			100 = {$plugin.tx_tgmlazynews.view.templateRootPath}
+		}
+		partialRootPaths {
+			10 = EXT:tgm_lazynews/Resources/Private/Partials/
+			100 = {$plugin.tx_tgmlazynews.view.partialRootPath}
+		}
+		layoutRootPaths {
+			10 = EXT:tgm_lazynews/Resources/Private/Layouts/
+			100 = {$plugin.tx_tgmlazynews.view.layoutRootPath}
+		}
 	}
 	persistence {
 		storagePid = {$plugin.tx_tgmlazynews.persistence.storagePid}
@@ -31,5 +40,15 @@ plugin.tx_tgmlazynews {
 		# rewrittenPropertyMapper = 1
 	}
 	settings =< plugin.tx_news.settings
+	settings {
+		lazy_constraints {
+			0 {
+				property = is_event
+				value = 0
+				intval = 1
+				operator = equals
+			}
+		}
+	}
 	_LOCAL_LANG =< plugin.tx_news._LOCAL_LANG
 }
