@@ -1,9 +1,13 @@
 var lazy_endReached = false;
 var lazy_loading = false;
 
-function lazyLoadNews(model, selector, offset, limit, constraints) {
+function lazyLoadNews(model, selector, offset, limit, pageid) {
     
-    if(typeof(constraints)==='undefined') constraints = false;
+    if(typeof(pageid)==='undefined') {
+        pageid = false;
+    } else {
+        pageid = parseInt(pageid);
+    }
     
     $loader = '<div class="ajax_loader" style="padding: 30px 0; text-align: center; float: left; width: 100%;"><img src="typo3conf/ext/tgm_lazynews/Resources/Public/Image/ajax-loader.gif" alt="Loading..." /></div>';
     selector.append($loader);
@@ -20,6 +24,8 @@ function lazyLoadNews(model, selector, offset, limit, constraints) {
 
     // JS Constraints are removed since 0.2.0 see Typoscript
     // if(constraints) data['tx_tgmlazynews_ajax[constraints]'] = constraints;
+    
+    if(pageid) data['id'] = pageid;
     
     $.ajax({
         type: "GET",
@@ -63,8 +69,8 @@ function initLazyLoading() {
             var contraints = false;
             
             // Call the function
-            // Model = news, jQuery selected news-list-container, offset, limit and optional constraints
-            lazyLoadNews('news',$('.news-list-view'), offset, 5, contraints);
+            // Model = news, jQuery selected news-list-container, offset, limit and an optional page id if the root page is a shortcut
+            lazyLoadNews('news',$('.news-list-view'), offset, 5, contraints, 666);
         } 
     });
 }
